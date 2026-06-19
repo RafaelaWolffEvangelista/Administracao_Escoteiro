@@ -24,10 +24,10 @@ class notificacoes
          $notificacao->setData_envio($linha['data_envio']);
          $notificacao->setId_escoteiro($linha['id_escoteiro']);
 
-         $lstNotificacoes[] = $notificacao;
+         $tabela_notificacao[] = $notificacao;
       }
 
-      return $lstNotificacoes;
+      return $tabela_notificacao;
    }
 
   public function SelectById(int $id)
@@ -67,10 +67,10 @@ class notificacoes
          $notificacao->setData_envio($linha['data_envio']);
          $notificacao->setId_escoteiro($linha['id_escoteiro']);
 
-         $lstNotificacoes[] = $notificacao;
+         $tabela_notificacao[] = $notificacao;
       }
 
-      return $lstNotificacoes;
+      return $tabela_notificacao;
    }
 
 

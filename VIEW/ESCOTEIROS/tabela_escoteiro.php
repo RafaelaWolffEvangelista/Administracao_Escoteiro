@@ -75,7 +75,7 @@ if (isset($_GET['busca_nome']) && !empty($_GET['busca_nome'])) {
                     <td><?php echo $escoteiro->getNomeCompleto(); ?></td>
                     <td><?php echo $escoteiro->getDataNascimento(); ?></td>
                     <td><?php echo $escoteiro->getNomeResponsavel(); ?></td>
-                    <td><?php echo $escoteiro->getBolsaFamilia(); ?></td>
+                    <td><?php echo $escoteiro->getBolsa_familia() ? 'Sim' : 'Não'; ?></td>
                     <td>
                         <a class="btn-floating btn-small waves-effect orange">
                             <i class="material-icons"

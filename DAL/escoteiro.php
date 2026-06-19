@@ -21,16 +21,16 @@ class escoteiro
       foreach ($registros as $linha) {
          $escoteiro = new \MODEL\escoteiro();
          $escoteiro->setId($linha['id']);
-         $escoteiro->setNome_completo($linha['nome_completo']);
-         $escoteiro->setData_nascimento($linha['data_nascimento']);
-         $escoteiro->setNome_responsavel($linha['nome_responsavel']);
-         $escoteiro->setBolsa_familia($linha['bolsa_familia']);
+         $escoteiro->setNomeCompleto($linha['nome_completo']);
+         $escoteiro->setDataNascimento($linha['data_nascimento']);
+         $escoteiro->setNomeResponsavel($linha['nome_responsavel']);
+         $escoteiro->setBolsaFamilia($linha['bolsa_familia']);
          $escoteiro->setStatus($linha['status']);
 
-         $lstEscoteiro[] = $escoteiro;
+         $tabela_escoteiro[] = $escoteiro;
       }
 
-      return $lstEscoteiro;
+      return $tabela_escoteiro;
    }
 
   public function SelectById(int $id)
@@ -70,10 +70,10 @@ class escoteiro
          $escoteiro->setNome_responsavel($linha['nome_responsavel']);
          $escoteiro->setBolsa_familia($linha['bolsa_familia']);
 
-         $lstEscoteiro[] = $escoteiro;
+         $tabela_escoteiro[] = $escoteiro;
       }
 
-      return $lstEscoteiro;
+      return $tabela_escoteiro;
    }
 
 

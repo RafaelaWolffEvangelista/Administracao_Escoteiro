@@ -5,12 +5,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/menu.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiro.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
 
-use DAL\Agricultor;
+use DAL\Escoteiro;
+
+$escoteiro = new \MODEL\escoteiro();
+$escoteiro->setNomeCompleto($_POST['txtNome']);
+$escoteiro->setDataNascimento($_POST['txtDataNasc']);
+$escoteiro->setNomeResponsavel($_POST['txtResponsavel']);
+// Tratamento de checkbox para boolean
+$escoteiro->setBolsaFamilia(isset($_POST['chkBolsa']) ? true : false); 
+$escoteiro->setStatus("Ativo");
 
 $dalEscoteiro = new DAL\Escoteiro();
 $escoteiro = $dalEscoteiro->SelectById($id);
 
-echo $escoteiro->getNome();
+echo $escoteiro->getNomeCompleto();
 ?>
 
 

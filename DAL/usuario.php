@@ -27,10 +27,10 @@ class usuario
          $usuario->setSenha($linha['senha']);
          $usuario->setCargo($linha['cargo']);
 
-         $lstUsuario[] = $usuario;
+         $tabela_usuario[] = $usuario;
       }
 
-      return $lstUsuario;
+      return $tabela_usuario;
    }
 
   public function SelectById(int $id)
@@ -72,10 +72,10 @@ class usuario
          $usuario->setSenha($linha['senha']);
          $usuario->setCargo($linha['cargo']);
 
-         $lstUsuario[] = $usuario;
+         $tabela_usuario[] = $usuario;
       }
 
-      return $lstUsuario;
+      return $tabela_usuario;
    }
 
 

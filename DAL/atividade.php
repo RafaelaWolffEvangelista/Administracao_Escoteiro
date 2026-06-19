@@ -24,10 +24,10 @@ class atividade
          $usuario->setTipo($linha['tipo']);
          $usuario->setDescricao($linha['descricao']);
          $usuario->setId_escoteiro($linha['id_escoteiro']);
-         $lstAtividade[] = $atividade;
+         $tabela_atividade[] = $atividade;
       }
 
-      return $lstAtividade;
+      return $tabela_atividade;
    }
 
   public function SelectById(int $id)
@@ -66,10 +66,10 @@ class atividade
          $atividade->setDescricao($linha['descricao']);
          $atividade->setId_escoteiro($linha['id_escoteiro']);
 
-         $lstAtividade[] = $atividade;
+         $tabela_atividade[] = $atividade;
       }
 
-      return $lstAtividade;
+      return $tabela_atividade;
    }
 
 

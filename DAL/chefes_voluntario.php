@@ -3,7 +3,7 @@
 namespace DAL;
 
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
-include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/chefes.php"; //mudar
+include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/chefes.php";
 
 
 
@@ -27,10 +27,10 @@ class chefes
          $chefes->setStatus($linha['status']);
          $chefes->setId_usuario($linha['id_usuario']);
 
-         $lstChefes[] = $chefes;
+         $tabela_chefes[] = $chefes;
       }
 
-      return $lstChefes;
+      return $tabela_chefes;
    }
 
   public function SelectById(int $id)
@@ -72,10 +72,10 @@ class chefes
          $chefes->setStatus($linha['status']);
          $chefes->setId_usuario($linha['id_usuario']);
 
-         $lstChefes[] = $chefes;
+         $tabela_chefes[] = $chefes;
       }
 
-      return $lstChefes;
+      return $tabela_chefes;
    }
 
 

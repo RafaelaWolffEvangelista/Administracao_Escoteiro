@@ -37,6 +37,12 @@
             $this->mensagem = $mensagem; 
         }
 
+        
+        public function getData_envio(){
+           return $this->data_envio; 
+        }
+
+
         public function setData_envio(string $data_envio){
             $this->data_envio = $data_envio; 
         }
