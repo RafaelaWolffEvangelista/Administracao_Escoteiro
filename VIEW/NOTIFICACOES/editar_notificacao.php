@@ -1,48 +1,59 @@
 <?php 
-$id = $_GET['idEscoteiro'] ?? null;
+// 1. Alinhado para ler '?id=' vindo do link da tabela de listagem
+$id = $_GET['id'] ?? null;
 
-include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/menu.php";  
-include_once $_SERVER['DOCUMENT_ROOT'] ."/escoteiro/DAL/escoteiros.php";
-include_once $_SERVER['DOCUMENT_ROOT'] ."/escoteiro/MODEL/escoteiro.php";
-include_once $_SERVER['DOCUMENT_ROOT'] ."/escoteiro/DAL/notificacoes.php";
-include_once $_SERVER['DOCUMENT_ROOT'] ."/escoteiro/MODEL/notificacoes.php";
+// 2. Inclui o cabeçalho unificado (carrega o HTML e o estilo CSS)
+include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
+include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/notificacoes.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/notificacoes.php";
 
-use DAL\notificacoes;
+// CORREÇÃO SEGURA: Busca direta via PDO para evitar o método inexistente na DAL
+$pdo = Conexao::getConexao();
+$stmt = $pdo->prepare("SELECT * FROM notificacoes WHERE id_notificacao = ?");
+$stmt->execute([(int)$id]);
+$dados = $stmt->fetch();
 
-$dalNotificacoes = new DAL\notificacoes();
-$notificacao = $dalNotificacoes->SelectById($id);
-
-echo $notificacao->getNome();
+// Se achou no banco, molda o objeto do Model para o formulário continuar funcionando igual
+$notificacao = null;
+if ($dados) {
+    $notificacao = new MODEL\Notificacoes(
+        $dados['id_notificacao'],
+        $dados['tipo'],
+        $dados['mensagem'],
+        $dados['data_envio'],
+        $dados['id_escoteiro']
+    );
+}
 ?>
+
 <div class="container">
     <div class="card" style="max-width: 600px; margin: 0 auto;">
-        <div class="card-title">Editar Notificação / Aviso</div>
+        <div class="card-title">Editar Ficha de Notificação</div>
+        
+        <?php if ($notificacao): ?>
         <form action="operacao_editar_notificacao.php" method="POST">
-            <input type="hidden" name="id_notificacao" value="<?php echo isset($_GET['id']) ? (int)$_GET['id'] : ''; ?>">
-            
-            <div class="form-group">
-                <label>Alterar Destinatário</label>
-                <select name="id_escoteiro" class="form-control" required>
-                    <?php foreach($notificacao as $e): ?>
-                        <option value="<?php echo $e['id_escoteiro']; ?>"><?php echo $e['nome']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+            <input type="hidden" name="id_notificacao" value="<?php echo $notificacao->getIdNotificacao(); ?>">
             
             <div class="form-group">
                 <label>Tipo de Mensagem</label>
-                <input type="text" name="tipo" value="Aviso de Cobrança Atualizado" class="form-control" required>
+                <input type="text" name="tipo" value="<?php echo $notificacao->getTipo(); ?>" class="form-control" required>
             </div>
             
             <div class="form-group">
                 <label>Mensagem de Aviso</label>
-                <textarea name="mensagem" class="form-control" rows="4" required>Prezado responsável, solicitamos o comparecimento à secretaria do Grupo Escoteiro Cambuy para regularização de pendências.</textarea>
+                <textarea name="mensagem" class="form-control" rows="4" required><?php echo $notificacao->getMensagem(); ?></textarea>
             </div>
             
-            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-            <a href="tabela_notificacao.php" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Atualizar Notificação</button>
+            <a href="tabela_notificacao.php" class="btn btn-secondary" style="margin-left: 10px;">Voltar</a>
         </form>
-    </div>
+        <?php else: ?>
+            <p class="text-danger">Notificação não encontrada para edição.</p>
+            <a href="tabela_notificacao.php" class="btn btn-secondary">Voltar para a Lista</a>
+        <?php endif; ?>
+   </div> 
 </div>
+
+<script src="/escoteiro/VIEW/js/javascript.js"></script>
 </body>
 </html>

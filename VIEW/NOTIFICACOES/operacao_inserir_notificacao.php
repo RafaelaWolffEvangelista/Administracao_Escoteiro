@@ -3,7 +3,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/notificacoes.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/notificacoes.php";  
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $notif = new Notificacoes(
+    
+    // Agora o PHP vai encontrar a classe perfeitamente!
+    $notif = new MODEL\Notificacoes(
         null,
         $_POST['tipo'],
         $_POST['mensagem'],
@@ -11,9 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         (int)$_POST['id_escoteiro']
     );
     
-    $dal = new DAL\notificacoes();
+    $dal = new NotificacoesDAL();
     $dal->insert($notif);
     
     header("Location: tabela_notificacao.php");
     exit();
 }
+?>
