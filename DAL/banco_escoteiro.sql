@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18/06/2026 às 20:04
+-- Tempo de geração: 20/06/2026 às 19:04
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.0.30
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,6 +36,34 @@ CREATE TABLE `atividades` (
   `tipo` varchar(50) DEFAULT NULL,
   `descricao` text DEFAULT NULL,
   `id_usuario` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `atividade_chefe`
+--
+
+DROP TABLE IF EXISTS `atividade_chefe`;
+CREATE TABLE `atividade_chefe` (
+  `id_vinculo_chefe` int(11) NOT NULL,
+  `id_atividade` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `data_vinculo` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `atividade_escoteiro`
+--
+
+DROP TABLE IF EXISTS `atividade_escoteiro`;
+CREATE TABLE `atividade_escoteiro` (
+  `id_vinculo` int(11) NOT NULL,
+  `id_atividade` int(11) NOT NULL,
+  `id_escoteiro` int(11) NOT NULL,
+  `data_inscricao` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -113,6 +141,21 @@ ALTER TABLE `atividades`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
+-- Índices de tabela `atividade_chefe`
+--
+ALTER TABLE `atividade_chefe`
+  ADD PRIMARY KEY (`id_vinculo_chefe`),
+  ADD KEY `id_atividade` (`id_atividade`);
+
+--
+-- Índices de tabela `atividade_escoteiro`
+--
+ALTER TABLE `atividade_escoteiro`
+  ADD PRIMARY KEY (`id_vinculo`),
+  ADD KEY `id_atividade` (`id_atividade`),
+  ADD KEY `id_escoteiro` (`id_escoteiro`);
+
+--
 -- Índices de tabela `chefes_voluntarios`
 --
 ALTER TABLE `chefes_voluntarios`
@@ -146,25 +189,37 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `atividades`
 --
 ALTER TABLE `atividades`
-  MODIFY `id_atividade` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_atividade` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de tabela `atividade_chefe`
+--
+ALTER TABLE `atividade_chefe`
+  MODIFY `id_vinculo_chefe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `atividade_escoteiro`
+--
+ALTER TABLE `atividade_escoteiro`
+  MODIFY `id_vinculo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `chefes_voluntarios`
 --
 ALTER TABLE `chefes_voluntarios`
-  MODIFY `id_voluntario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_voluntario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `escoteiros`
 --
 ALTER TABLE `escoteiros`
-  MODIFY `id_escoteiro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_escoteiro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `notificacoes`
 --
 ALTER TABLE `notificacoes`
-  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -181,6 +236,19 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `atividades`
   ADD CONSTRAINT `atividades_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+
+--
+-- Restrições para tabelas `atividade_chefe`
+--
+ALTER TABLE `atividade_chefe`
+  ADD CONSTRAINT `atividade_chefe_ibfk_1` FOREIGN KEY (`id_atividade`) REFERENCES `atividades` (`id_atividade`) ON DELETE CASCADE;
+
+--
+-- Restrições para tabelas `atividade_escoteiro`
+--
+ALTER TABLE `atividade_escoteiro`
+  ADD CONSTRAINT `atividade_escoteiro_ibfk_1` FOREIGN KEY (`id_atividade`) REFERENCES `atividades` (`id_atividade`) ON DELETE CASCADE,
+  ADD CONSTRAINT `atividade_escoteiro_ibfk_2` FOREIGN KEY (`id_escoteiro`) REFERENCES `escoteiros` (`id_escoteiro`) ON DELETE CASCADE;
 
 --
 -- Restrições para tabelas `chefes_voluntarios`
