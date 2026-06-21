@@ -1,33 +1,24 @@
 <?php
-    namespace DAL; 
+class Conexao {
+    private static ?PDO $conexao = null;
 
-    use PDO; 
-    
-    class Conexao {
-        private static $dbNome = 'administracao_escoteiro'; 
-        private static $dbHost = 'localhost';
-        private static $dbUsuario = 'root'; 
-        private static $dbSenha = '';
-
-        private static $cont = null;
-
-        public static function conectar(){
-          if (self::$cont == null){
-              try{ 
-
-                self::$cont = new PDO("mysql:host=" . self::$dbHost . ";dbname=" . self::$dbNome,  self::$dbUsuario , self::$dbSenha); 
-                   }
-            catch (\PDOException $exception) {
-                die ($exception->getMessage());
+    public static function getConexao(): PDO {
+        if (self::$conexao === null) {
+            try {
+                self::$conexao = new PDO(
+                    "mysql:host=localhost;dbname=administracao_escoteiro;charset=utf8",
+                    "root",
+                    "",
+                    [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                    ]
+                );
+            } catch (PDOException $e) {
+                die("Erro de conexão: " . $e->getMessage());
             }
         }
-        return self::$cont; 
+        return self::$conexao;
     }
-    
-    public static function desconectar (){
-        self::$cont = null;
-        return self::$cont;  
-    }
-
-    }
+}
 ?>
