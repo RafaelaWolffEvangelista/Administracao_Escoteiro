@@ -1,5 +1,5 @@
 <?php 
-
+// 1. Inclui o menu unificado primeiro (ele abre o HTML, <head> e carrega o CSS)
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
@@ -7,6 +7,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
 
 $dalEscoteiros = new EscoteiroDAL(); 
 
+// Puxa os escoteiros calculando em tempo real o total de notificações individuais recebidas
 $pdo = Conexao::getConexao();
 $query = "
     SELECT e.*, 
@@ -38,7 +39,8 @@ $tabela_escoteiro = $pdo->query($query)->fetchAll();
                 <tbody>
                     <?php foreach($tabela_escoteiro as $e): 
                         $atividadesCount = $dalEscoteiros->contarAtividadesParticipando($e['id_escoteiro']);
-
+                        
+                        // Define a cor da badge do status financeiro baseado nas regras informadas
                         $statusText = !empty($e['status']) ? $e['status'] : 'Pendente';
                         $badgeClass = (strtolower($statusText) === 'atrasado') ? 'badge-atrasado' : 'badge-pendente';
                     ?>
@@ -63,9 +65,9 @@ $tabela_escoteiro = $pdo->query($query)->fetchAll();
                         </td>
                         
                         <td>
-                            <a href="detalhes_escoteiro.php?id=<?php echo $e['id_escoteiro']; ?>" class="btn btn-secondary">🔍</a>
-                            <a href="editar_escoteiro.php?id=<?php echo $e['id_escoteiro']; ?>" class="btn btn-primary">✏️</a>
-                            <a href="operacao_remover_escoteiro.php?id=<?php echo $e['id_escoteiro']; ?>" class="btn btn-danger" onclick="return confirm('Excluir?')">🗑️</a>
+                            <a href="detalhes_escoteiro.php?id=<?php echo $e['id_escoteiro']; ?>" class="btn btn-secondary" style="padding: 4px 8px;">🔍</a>
+                            <a href="editar_escoteiro.php?id=<?php echo $e['id_escoteiro']; ?>" class="btn btn-primary" style="padding: 4px 8px;">✏️</a>
+                            <a href="operacao_remover_escoteiro.php?id=<?php echo $e['id_escoteiro']; ?>" class="btn btn-danger" onclick="return confirm('Excluir?')" style="padding: 4px 8px;">🗑️</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

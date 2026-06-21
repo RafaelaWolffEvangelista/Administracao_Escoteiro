@@ -1,11 +1,13 @@
 <?php 
-
+// 1. CORREÇÃO: Alinhado para ler '?id=' vindo do link da tabela de listagem
 $id = $_GET['id'] ?? null;
 
+// 2. Inclui o cabeçalho unificado (carrega o HTML e o estilo CSS)
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
 
+// CORREÇÃO: Instanciando o nome real da classe (EscoteiroDAL) de forma direta e chamando findById()
 $dalEscoteiros = new EscoteiroDAL();
 $escoteiro = $dalEscoteiros->findById((int)$id);
 ?>
