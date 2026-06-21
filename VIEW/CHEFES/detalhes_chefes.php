@@ -1,14 +1,17 @@
 <?php 
-
+// 1. Inclui o menu unificado (carrega o cabeçalho HTML e o estilo CSS)
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 
 $id = $_GET['id'] ?? null;
 
+// 2. Importa as dependências de banco e modelo
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/chefes_voluntario.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/chefes.php";
 
+// CORREÇÃO: Instancia o nome real e correto da sua classe DAL (sem caminhos virtuais)
 $dalChefes = new ChefesVoluntariosDAL();
 
+// CORREÇÃO: Mudado de SelectById para findById (nome real do método na sua DAL)
 $chefe = $dalChefes->findById((int)$id);
 ?>
 <div class="container">

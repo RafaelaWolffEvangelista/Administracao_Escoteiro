@@ -2,7 +2,7 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/chefes_voluntario.php";
 
 if(isset($_GET['id'])) {
-
+    // CORREÇÃO: Instanciando o nome real da classe da DAL (ChefesVoluntariosDAL) de forma direta
     $dal = new ChefesVoluntariosDAL();
     $dal->delete((int)$_GET['id']);
 }
