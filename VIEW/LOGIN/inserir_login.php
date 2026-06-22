@@ -15,12 +15,12 @@
 
     <div class="container">
         <div class="logo-container">
-            <img src="/escoteiro/VIEW/imagem/logoescoteiro.webp" width="100" height="100" alt="Logo Escoteiro">
+            <img src="/escoteiro/VIEW/imagem/logoescoteiro.jpeg" width="100" height="100" alt="Logo Escoteiro">
         </div>
         
         <h4>LOGIN</h4>
 
-        <form method="POST" action="home.php">
+        <form method="POST" action="/escoteiro/VIEW/home.php">
             
             <div class="input-container">
                 <label for="usuario">USUÁRIO</label>

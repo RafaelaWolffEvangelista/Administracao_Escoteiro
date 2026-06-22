@@ -16,7 +16,7 @@ if (session_status() == PHP_SESSION_NONE) { session_start(); }
 <body>
 <nav class="navbar">
     <div class="nav-logo-area">
-        <img src="/escoteiro/VIEW/imagem/logoescoteiro.webp" alt="Logo Cambuy" class="nav-logo">
+        <img src="/escoteiro/VIEW/imagem/logoescoteiro.jpeg" alt="Logo Cambuy" class="nav-logo">
         <strong>Gestão Cambuy</strong>
     </div>
     <div class="menu-toggle">
