@@ -1,6 +1,5 @@
 <?php
-
- namespace MODEL;
+namespace MODEL;
  
 class Usuario {
     private ?int $id_usuario;
