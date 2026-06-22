@@ -1,29 +1,50 @@
+<?php
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/usuario.php";
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login - GE Cambuy</title>
-    <link rel="stylesheet" href="../../assets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/escoteiro/VIEW/css/login.css">
 </head>
-<body style="background:#f3f0ff; display:flex; justify-content:center; align-items:center; height:100vh;">
-<div class="card" style="width:100%; max-width:400px;">
-    <div style="text-align:center; margin-bottom:20px;">
-        <img src="../../logoescoteiro.webp" style="width:90px;" alt="Logo">
-        <h2>Área Restrita</h2>
+<body>
+
+    <div class="container">
+        <div class="logo-container">
+            <img src="/escoteiro/VIEW/imagem/logoescoteiro.webp" width="100" height="100" alt="Logo Escoteiro">
+        </div>
+        
+        <h4>LOGIN</h4>
+
+        <form method="POST" action="login.php">
+            
+            <div class="input-container">
+                <label for="usuario">USUÁRIO</label>
+                <div class="icon"><i class="material-icons">account_circle</i></div>
+                <input id="usuario" type="text" name="usuario" placeholder="Digite seu usuário" required>
+            </div>
+
+            <div class="input-container">
+                <label for="password">SENHA</label>
+                <div class="icon"><i class="material-icons">lock</i></div>
+                <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+            </div>
+
+            <button type="submit" name="action">ACESSAR</button>
+            
+        </form>
     </div>
-    <form action="operacao_inserir_login.php" method="POST">
-        <div class="form-group">
-            <label>E-mail institucional</label>
-            <input type="email" name="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label>Senha de Acesso</label>
-            <input type="password" name="senha" class="form-control" oninput="avaliarForcaSenha(this.value)" required>
-            <small id="feedback-senha" style="font-weight:bold;"></small>
-        </div>
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Entrar no Sistema</button>
-    </form>
-</div>
-<script src="../../assets/script.js"></script>
+
+    <footer class="footer">
+        <p>&copy; 2024 GE Cambuy</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="/escoteiro/VIEW/js/javascript.js"></script>
 </body>
 </html>

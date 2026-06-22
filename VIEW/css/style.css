@@ -216,3 +216,12 @@ td {
 .badge-pago { background-color: #e8f5e9; color: var(--success); }
 .badge-pendente { background-color: #fffde7; color: #f57f17; }
 .badge-atrasado { background-color: #ffebee; color: var(--danger); }
+
+ .inserir_login {
+  border: 1px solid #fff;
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+}
+

@@ -1,0 +1,117 @@
+/* Configurações Gerais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #5b4bc4, #6150b7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Arial", sans-serif;
+}
+
+/* Container do Card de Login */
+.container {
+  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+/* Logotipo */
+.logo-container img {
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
+
+h4 {
+  color: #5b4bc4;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Customização dos Inputs (Estilo moderno) */
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-container i {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-container input:focus {
+  border-color: #5b4bc4;
+  box-shadow: 0 0 8px rgba(60, 33, 197, 0.2);
+}
+
+.input-container label {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Botão de Ação */
+button {
+  background: #5b4bc4;
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #5b4bc4;
+}
+
+/* Rodapé */
+.footer {
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.footer p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+  color: #111010;
+}
