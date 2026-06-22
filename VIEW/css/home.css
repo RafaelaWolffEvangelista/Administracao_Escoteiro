@@ -1,25 +1,25 @@
-/* Configurações Gerais de Fonte e Fundo */
+
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #f4f6f9; /* Um cinza bem claro para destacar os cards brancos */
+  background-color: #f4f6f9; 
   margin: 0;
   padding: 0;
 }
 
-/* Container Principal */
+
 .home-container {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* Estilização do Card de Boas-Vindas */
+
 .welcome-card {
   background: linear-gradient(
     135deg,
     #4b23b6,
     #6b3cdb
-  ); /* Degradê roxo combinando com seu tema */
+  ); 
   color: white;
   padding: 40px;
   border-radius: 12px;
@@ -39,7 +39,7 @@ body {
   opacity: 0.9;
 }
 
-/* Grid de Cards (Lado a Lado) */
+
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

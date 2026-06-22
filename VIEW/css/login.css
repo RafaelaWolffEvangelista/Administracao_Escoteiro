@@ -15,7 +15,7 @@ body {
   font-family: "Arial", sans-serif;
 }
 
-/* Container do Card de Login */
+
 .container {
   background: white;
   width: 100%;
@@ -26,7 +26,7 @@ body {
   text-align: center;
 }
 
-/* Logotipo */
+
 .logo-container img {
   margin-bottom: 15px;
   border-radius: 50%;
@@ -40,7 +40,7 @@ h4 {
   letter-spacing: 1px;
 }
 
-/* Customização dos Inputs (Estilo moderno) */
+
 .input-container {
   position: relative;
   margin-bottom: 20px;
@@ -76,7 +76,7 @@ h4 {
   font-weight: bold;
 }
 
-/* Botão de Ação */
+
 button {
   background: #5b4bc4;
   color: white;
@@ -95,7 +95,7 @@ button:hover {
   background: #5b4bc4;
 }
 
-/* Rodapé */
+
 .footer {
   position: absolute;
   bottom: 20px;

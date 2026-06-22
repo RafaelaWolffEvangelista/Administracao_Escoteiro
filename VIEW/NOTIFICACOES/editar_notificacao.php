@@ -1,19 +1,19 @@
 <?php 
-// 1. Alinhado para ler '?id=' vindo do link da tabela de listagem
+
 $id = $_GET['id'] ?? null;
 
-// 2. Inclui o cabeçalho unificado (carrega o HTML e o estilo CSS)
+
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/notificacoes.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/notificacoes.php";
 
-// CORREÇÃO SEGURA: Busca direta via PDO para evitar o método inexistente na DAL
+
 $pdo = Conexao::getConexao();
 $stmt = $pdo->prepare("SELECT * FROM notificacoes WHERE id_notificacao = ?");
 $stmt->execute([(int)$id]);
 $dados = $stmt->fetch();
 
-// Se achou no banco, molda o objeto do Model para o formulário continuar funcionando igual
+
 $notificacao = null;
 if ($dados) {
     $notificacao = new MODEL\Notificacoes(

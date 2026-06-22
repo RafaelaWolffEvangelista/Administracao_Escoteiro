@@ -4,9 +4,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
 
 $pdo = Conexao::getConexao();
 
-// Busca as atividades e os chefes voluntários cadastrados
 $atividades = $pdo->query("SELECT * FROM atividades ORDER BY data_atividade DESC")->fetchAll();
-$chefes = $pdo->query("SELECT * FROM chefes_voluntarios ORDER BY nome ASC")->fetchAll(); // Ajuste 'usuarios' se sua tabela tiver outro nome
+$chefes = $pdo->query("SELECT * FROM chefes_voluntarios ORDER BY nome ASC")->fetchAll(); 
 ?>
 
 <div class="container">

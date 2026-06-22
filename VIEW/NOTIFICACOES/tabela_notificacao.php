@@ -1,14 +1,14 @@
 <?php 
-// 1. Inclui o menu unificado correto que carrega o CSS roxo e lilás
+
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
 
-// 2. Pega o ID de forma genérica se vier por parâmetro (?id=...) para filtrar
+
 $id = $_GET['id'] ?? null;
 
 $pdo = Conexao::getConexao();
 
-// Query unificada para buscar as notificações trazendo o nome do escoteiro associado
+
 if ($id) {
     $stmt = $pdo->prepare("SELECT n.*, e.nome as nome_escoteiro FROM notificacoes n LEFT JOIN escoteiros e ON n.id_escoteiro = e.id_escoteiro WHERE n.id_escoteiro = ? ORDER BY n.data_envio DESC");
     $stmt->execute([(int)$id]);

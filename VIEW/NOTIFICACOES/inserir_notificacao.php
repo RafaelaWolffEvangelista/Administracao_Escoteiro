@@ -1,11 +1,11 @@
 <?php 
-// 1. Inclui o menu unificado oficial (carrega o HTML, <head> e o estilo CSS)
+
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
 
-// Captura o ID do escoteiro que veio do botão "Cobrar" da tabela de escoteiros
+
 $id_escoteiro = $_GET['id_escoteiro'] ?? null;
 
 if (!$id_escoteiro) {

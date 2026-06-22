@@ -26,7 +26,7 @@ class Notificacoes {
     public function setTipo(string $tipo): void { $this->tipo = $tipo; }
 
     public function getMensagem(): string { return $this->mensagem; }
-    public function setDescricao(string $mensagem): void { $this->mensagem = $mensagem; } // Mantendo compatibilidade com sets longos
+    public function setDescricao(string $mensagem): void { $this->mensagem = $mensagem; } 
     public function setMensagem(string $mensagem): void { $this->mensagem = $mensagem; }
 
     public function getDataEnvio(): string { return $this->data_envio; }

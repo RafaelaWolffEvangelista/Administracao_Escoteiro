@@ -1,15 +1,12 @@
 <?php
-/**
- * ARQUIVO: formulario_cadastro.php
- * OBJETIVO: Interface do usuário que exibe os campos e consome os erros de validação da sessão.
- */
+
 session_start();
 
-// Recupera erros e dados preenchidos anteriormente, se existirem
+
 $erros = $_SESSION['erros_validacao'] ?? [];
 $velhos_dados = $_SESSION['dados_antigos'] ?? [];
 
-// Limpa as variáveis da sessão para não ficarem aparecendo eternamente
+
 unset($_SESSION['erros_validacao']);
 unset($_SESSION['dados_antigos']);
 ?>

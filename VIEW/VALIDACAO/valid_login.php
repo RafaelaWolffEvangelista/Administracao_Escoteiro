@@ -66,11 +66,11 @@ unset($_SESSION['erro_login'], $_SESSION['velho_usuario']);
         let forca = 0;
 
         if (valor.length >= 8) forca++;
-        if (/[A-Z]/.test(valor)) forca++; // Letra maiúscula
-        if (/[0-9]/.test(valor)) forca++; // Número
-        if (/[^A-Za-z0-9]/.test(valor)) forca++; // Caractere especial
+        if (/[A-Z]/.test(valor)) forca++; 
+        if (/[0-9]/.test(valor)) forca++; 
+        if (/[^A-Za-z0-9]/.test(valor)) forca++; 
 
-        // Atualiza a interface com base nos critérios de segurança
+       
         if (valor.length === 0) {
             feedbackSenha.textContent = '';
         } else if (forca <= 2) {
@@ -85,10 +85,10 @@ unset($_SESSION['erro_login'], $_SESSION['velho_usuario']);
         }
     });
 
-    // Validação extra JS no Submit do formulário (Segunda barreira do front-end)
+    
     formLogin.addEventListener('submit', (e) => {
         if (senhaInput.value.length < 8) {
-            e.preventDefault(); // Bloqueia o envio do formulário
+            e.preventDefault(); 
             alert('Por motivos de segurança, sua senha precisa ter no mínimo 8 caracteres.');
         }
     });

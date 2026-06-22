@@ -4,7 +4,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/notificacoes.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-    // Agora o PHP vai encontrar a classe perfeitamente!
+    
     $notif = new MODEL\Notificacoes(
         null,
         $_POST['tipo'],

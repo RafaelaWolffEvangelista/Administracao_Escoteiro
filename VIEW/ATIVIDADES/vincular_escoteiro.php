@@ -6,7 +6,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
 $escDAL = new EscoteiroDAL();
 $escoteiros = $escDAL->selectAll();
 
-// Busca as atividades direto para preencher o select
 $pdo = Conexao::getConexao();
 $atividades = $pdo->query("SELECT * FROM atividades ORDER BY data_atividade DESC")->fetchAll();
 ?>

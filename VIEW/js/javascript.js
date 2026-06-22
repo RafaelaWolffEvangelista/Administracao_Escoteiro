@@ -1,4 +1,4 @@
-// Ativação da Navbar Responsiva
+
 document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Funções de Validação de Input Solicitadas
+
 function validarApenasLetras(input) {
     const regex = /^[A-Za-zÀ-ÿ\s]+$/;
     if (!regex.test(input.value) && input.value !== "") {
@@ -27,7 +27,7 @@ function validarApenasNumeros(input) {
     }
 }
 
-// Verificação de força da senha em tempo real
+
 function avaliarForcaSenha(senha) {
     let forca = 0;
     if (senha.length >= 6) forca++;

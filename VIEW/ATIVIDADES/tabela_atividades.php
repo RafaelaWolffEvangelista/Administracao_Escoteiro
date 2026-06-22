@@ -1,13 +1,10 @@
 <?php 
-// 1. FORÇAR A CONEXÃO AQUI NA MARRA (Antes de qualquer outra linha do arquivo)
 if (!class_exists('Conexao')) {
     include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
 }
 
-// 2. Agora sim inclui o menu unificado do sistema
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 
-// 3. Executa a query customizada
 $pdo = Conexao::getConexao();
 $query = "
     SELECT a.*, 

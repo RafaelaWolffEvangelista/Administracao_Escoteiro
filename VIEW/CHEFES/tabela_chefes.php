@@ -1,15 +1,10 @@
 <?php 
-// 1. Inclui o menu unificado (carrega o head, CSS e a estrutura do topo)
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";
-
-// 2. Importa as dependências corretas de banco e modelo
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/chefes_voluntario.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/chefes.php";
 
-// CORREÇÃO: Instancia o nome exato da classe que está no seu arquivo da DAL
 $dalChefes = new ChefesVoluntariosDAL(); 
 
-// 3. Executa a listagem padrão utilizando o método selectAll() que existe na sua DAL
 if (isset($_GET['busca_nome']) && !empty($_GET['busca_nome'])) {
     $termo = $_GET['busca_nome'];
     $tabelaChefes = $dalChefes->selectAll(); 

@@ -9,7 +9,7 @@ use MODEL\Usuario;
 class UsuarioDAL {
     
     public function autenticar(string $email, string $senha): ?Usuario {
-        // A barra invertida força o PHP a buscar a Conexao no escopo global
+        
         $pdo = \Conexao::getConexao(); 
         
         $senha_criptografada = md5($senha);

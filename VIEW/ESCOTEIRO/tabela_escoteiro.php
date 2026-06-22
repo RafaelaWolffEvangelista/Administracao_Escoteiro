@@ -1,16 +1,16 @@
 <?php 
-// 1. Inclui o menu unificado primeiro
+
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";
 
-// 2. Importa as conexões e classes usando caminhos absolutos baseados na raiz do servidor
+
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
-include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php"; // Certifique-se de que o nome do arquivo é exatamente escoteiros.php
+include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
 
-// CORREÇÃO DO ERRO: Instanciando a classe informando o caminho do Namespace completo
+
 $dalEscoteiros = new \DAL\EscoteiroDAL(); 
 
-// Puxa os escoteiros calculando em tempo real o total de notificações individuais recebidas
+
 $pdo = \Conexao::getConexao();
 $query = "
     SELECT e.*, 
@@ -42,7 +42,7 @@ $tabela_escoteiro = $pdo->query($query)->fetchAll();
                     <?php foreach($tabela_escoteiro as $e): 
                         $atividadesCount = $dalEscoteiros->contarAtividadesParticipando($e['id_escoteiro']);
                         
-                        // Define a cor da badge do status financeiro baseado nas regras informadas
+                       
                         $statusText = !empty($e['status']) ? $e['status'] : 'Pendente';
                         $badgeClass = (strtolower($statusText) === 'atrasado') ? 'badge-atrasado' : 'badge-pendente';
                     ?>

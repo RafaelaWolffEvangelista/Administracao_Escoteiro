@@ -1,5 +1,5 @@
 <?php 
-// 1. CORREÇÃO: Trocado menu.php pelo menu unificado correto (carrega cabeçalho e CSS)
+
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 
 $id = $_GET['id'] ?? null;
@@ -9,7 +9,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/notificacoes.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/notificacoes.php";
 
-// CORREÇÃO: Mudado de 'notifications' para 'notificacoes' na cláusula FROM
 $pdo = Conexao::getConexao();
 $stmt = $pdo->prepare("SELECT n.*, e.nome as nome_escoteiro FROM notificacoes n LEFT JOIN escoteiros e ON n.id_escoteiro = e.id_escoteiro WHERE n.id_notificacao = ?");
 $stmt->execute([(int)$id]);

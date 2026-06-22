@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pdo = Conexao::getConexao();
 
-    // Evita escalar o mesmo chefe duas vezes na mesma atividade
     $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM atividade_chefe WHERE id_atividade = ? AND id_usuario = ?");
     $stmtCheck->execute([$id_atividade, $id_usuario]);
     

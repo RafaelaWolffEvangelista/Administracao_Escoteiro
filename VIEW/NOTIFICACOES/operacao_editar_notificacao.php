@@ -9,12 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo = $_POST['tipo'];
     $mensagem = $_POST['mensagem'];
 
-    // CORREÇÃO SEGURA: Executa a atualização direto via PDO para contornar o método ausente na DAL
+    
     $pdo = Conexao::getConexao();
     $stmt = $pdo->prepare("UPDATE notificacoes SET tipo = ?, mensagem = ? WHERE id_notificacao = ?");
     $stmt->execute([$tipo, $mensagem, $id_notificacao]);
     
-    // Redireciona de volta para a listagem atualizada
+  
     header("Location: tabela_notificacao.php");
     exit();
 }
