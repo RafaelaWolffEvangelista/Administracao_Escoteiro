@@ -2,9 +2,10 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php"; 
 
+use DAL\EscoteiroDAL;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-   
     $escoteiro = new MODEL\Escoteiro(
         (int)$_POST['id_escoteiro'], 
         $_POST['nome'], 
@@ -15,11 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_POST['status']
     );
     
-  
     $dal = new EscoteiroDAL();
     $dal->update($escoteiro);
     
-   
     header("Location: tabela_escoteiro.php");
     exit();
 }

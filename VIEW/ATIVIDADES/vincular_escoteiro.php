@@ -3,6 +3,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
 
+use DAL\EscoteiroDAL;
+
 $escDAL = new EscoteiroDAL();
 $escoteiros = $escDAL->selectAll();
 

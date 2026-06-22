@@ -2,11 +2,11 @@
 
 $id = $_GET['id'] ?? null;
 
-
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
 
+use DAL\EscoteiroDAL;
 
 $dalEscoteiros = new EscoteiroDAL();
 $escoteiro = $dalEscoteiros->findById((int)$id);

@@ -1,9 +1,10 @@
 <?php 
-
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/VIEW/shared_nav.php";  
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/conexao.php";
-include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/DAL/escoteiros.php";
 include_once $_SERVER['DOCUMENT_ROOT'] . "/escoteiro/MODEL/escoteiro.php";
+
+use DAL\EscoteiroDAL;
 
 $id_escoteiro = $_GET['id'] ?? null;
 
@@ -29,15 +30,12 @@ if (!$escoteiro) {
     exit();
 }
 
-// 2. Busca a quantidade de atividades que ele participa usando a DAL existente
 $atividadesCount = $dalEscoteiros->contarAtividadesParticipando($id_escoteiro);
 
-// 3. Busca o histórico de todas as mensagens de cobrança enviadas para este jovem
 $stmtNotif = $pdo->prepare("SELECT * FROM notificacoes WHERE id_escoteiro = ? ORDER BY data_envio DESC");
 $stmtNotif->execute([(int)$id_escoteiro]);
 $historicoNotificacoes = $stmtNotif->fetchAll();
 
-// Ajusta a badge do status financeiro
 $statusText = !empty($escoteiro['status']) ? $escoteiro['status'] : 'Pendente';
 $badgeClass = (strtolower($statusText) === 'pago') ? 'background: #28a745; color: white;' : ((strtolower($statusText) === 'atrasado') ? 'background: #e53e3e; color: white;' : 'background: #dd6b20; color: white;');
 ?>
@@ -97,11 +95,6 @@ $badgeClass = (strtolower($statusText) === 'pago') ? 'background: #28a745; color
             <a href="tabela_escoteiro.php" class="btn btn-secondary">Voltar para Listagem</a>
             <a href="editar_escoteiro.php?id=<?php echo $escoteiro['id_escoteiro']; ?>" class="btn btn-primary">✏️ Editar Cadastro</a>
             
-            <?php if (strtolower($statusText) !== 'pago'): ?>
-                <a href="/escoteiro/VIEW/NOTIFICACOES/inserir_notificacao.php?id_escoteiro=<?php echo $escoteiro['id_escoteiro']; ?>" class="btn btn-secondary" style="background: #6b46c1;">
-                    Emitir Nova Cobrança
-                </a>
-            <?php endif; ?>
         </div>
     </div>
 </div>
